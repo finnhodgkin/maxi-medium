@@ -1,0 +1,37 @@
+{
+  "name": "mini-medium",
+  "version": "1.0.0",
+  "description": "A very light-weight medium clone.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bo-bok/mmedium.git"
+  },
+  "author": "MMedium",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bo-bok/mmedium/issues"
+  },
+  "homepage": "https://github.com/bo-bok/mmedium#readme",
+  "dependencies": {
+    "env2": "^2.1.1",
+    "handlebars": "^4.0.6",
+    "hapi": "^16.1.1",
+    "hapi-auth-cookie": "^7.0.0",
+    "inert": "^4.2.0",
+    "istanbul": "^0.4.5",
+    "pg": "^6.1.5",
+    "vision": "^4.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.3"
+  }
+}
