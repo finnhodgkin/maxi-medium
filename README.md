@@ -40,6 +40,25 @@ As a user, I want to be able to:
 
 ## Architecture
 
-## Schema
+## Schema Diagrams
+
+We used the following schema for the database:
+
+### user
+Column | Type | Modifiers
+--- | --- | ---
+id | integer | not null default
+username | character varying(100) | not null
+password | character varying(100) | not null
+avatar_url | character varying(100) | not null
+
+### article
+Column | Type | Modifiers
+--- | --- | ---
+id | integer | not null default
+user_id | integer | not null
+title | character varying(100) | not null
+body_text | character varying(2000) | not null
+image_url | character varying(100) | not null
 
 ## Learnings
