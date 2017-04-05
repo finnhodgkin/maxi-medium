@@ -1,5 +1,5 @@
 module.exports = (arg, tasks, cb) => {
-   const waterfallcb = (error, res) => {
+  const waterfallcb = (error, res) => {
     if (error) { return cb(error); }
     n += 1;
     if (n === tasks.length) {
@@ -10,4 +10,4 @@ module.exports = (arg, tasks, cb) => {
   };
   let n = 0;
   waterfallcb(null, arg);
-}
+};

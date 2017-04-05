@@ -6,4 +6,4 @@ module.exports = {
       path: './public',
     }
   }
-}
+};
