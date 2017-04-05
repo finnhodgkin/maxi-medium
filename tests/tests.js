@@ -8,11 +8,11 @@ tape('Testing the test', (t) => {
 
 tape('check the route with invalid url', (t) => {
   var options = {
-    url: '/',
+    url: '/nothing',
     method: 'GET',
   };
   server.inject(options, (res) => {
-    t.equal(res.statusCode, 200, 'Incorrect url should return 404');
+    t.equal(res.statusCode, 404, 'Incorrect url should return 404');
     t.end();
   });
 });
