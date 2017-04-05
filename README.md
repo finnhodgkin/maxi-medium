@@ -73,3 +73,5 @@ body_text | character varying(2000) | not null
 image_url | character varying(100) | not null
 
 ## Learnings
+
+- We made our wireframes using this website: [moqup.com](https://app.moqups.com/edit/page/ad64222d5)
