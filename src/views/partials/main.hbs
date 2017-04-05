@@ -5,13 +5,13 @@
 
     <article class="result__item">
       <header class="result__header">
-        <img class="result__avatar" src="{{avatar}}" alt="author avatar" />
-        <div class="result__author">{{name}}</div>
-        <div class="result__date">{{date}}</div>
+        <!-- <img class="result__avatar" src="{{avatar}}" alt="author avatar" /> -->
+        <div class="result__author">{{author_id}}</div>
+        <!-- <div class="result__date">{{date}}</div> -->
       </header>
-      <img class="result__image" src="{{image}}" alt=""/>
+      <img class="result__image" src="{{image_url}}" alt=""/>
       <h3 class="result__title">{{title}}</h3>
-      <p class="result__summary">{{shortenBody body}}</p>
+      <p class="result__summary">{{shortenBody body_text}}</p>
     </article>
 
     {{/each}}

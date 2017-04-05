@@ -8,7 +8,7 @@ const routes = require('./routes');
 const handlebars = require('./handlebars');
 
 server.connection({
-  host: process.env.HOSTNAME || 'localhost',
+  // host: process.env.HOSTNAME || 'localhost',
   port: process.env.PORT || 4000,
 });
 
