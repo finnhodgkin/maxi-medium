@@ -38,6 +38,17 @@ As a user, I want to be able to:
 
 ## Wireframe
 
+We mapped out the following wireframes for our site, that included three different pages:
+
+#### Home
+![homepage](https://cloud.githubusercontent.com/assets/16895125/24709073/aa6007bc-1a10-11e7-9360-5faf82a654a7.png)
+
+#### Submit new post
+![submit](https://cloud.githubusercontent.com/assets/16895125/24709069/a645173a-1a10-11e7-8377-6372c70744b0.png)
+
+#### View Post
+![viewblog](https://cloud.githubusercontent.com/assets/16895125/24709065/a37ee33c-1a10-11e7-95c7-6ea8f7b7c7e4.png)
+
 ## Architecture
 
 ## Schema Diagrams
@@ -62,3 +73,5 @@ body_text | character varying(2000) | not null
 image_url | character varying(100) | not null
 
 ## Learnings
+
+- We made our wireframes using this website: [moqup.com](https://app.moqups.com/edit/page/ad64222d5)
