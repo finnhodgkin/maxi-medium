@@ -17,9 +17,11 @@ module.exports = {
         if (err) { return reply.view('login', {isAuthenticated: false}); }
 
         if (isAuthenticated) {
+          console.log('============', avatar);
           req.cookieAuth.set({username, avatar});
         }
-        reply.view('test', {username, password, isAuthenticated});
+        reply.redirect('/');
+        // reply.view('test', {username, password, isAuthenticated});
       });
     });
 

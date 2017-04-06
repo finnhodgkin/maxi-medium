@@ -1,3 +1,5 @@
+
+
 <header class="navbar">
   <div class="navbar__container">
 
@@ -23,7 +25,7 @@
     </a>
 
     <a href="/new-article" class="header__link header__link--new
-     {{#if isAuthenticated}}
+     {{#if credentials.username}}
        header__link--accent
      {{else}}
        header__link--chromeless
@@ -31,7 +33,7 @@
        Write a story
     </a>
 
-    {{#unless isAuthenticated}}
+    {{#unless credentials.username}}
     <a href="/login" class="header__link header__link--login header__link--accent">
       Log in / Sign up
     </a>
@@ -45,6 +47,11 @@
       </svg>
       <input class="search__input" name="q" type="text" placeholder="Search articles" required autocomplete="off"/>
     </form>
+    {{credentials.username}}
+
+
+
+
 
   </div>
 </header>
