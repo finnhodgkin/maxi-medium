@@ -3,7 +3,8 @@ module.exports = [
   // require('./article'),
   // require('./new_article'),
   require('./public'),
-  require('./login'),
-  require('./login_post'),
+  require('./login_register'),
+  require('./login_submit'),
+  require('./register_submit'),
   require('./logout'),
 ];
