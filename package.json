@@ -7,8 +7,9 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "tape tests/tests.js | tap-spec",
     "start": "node index",
+    "pretest": "ENV=testing node database_build/db_build.js",
+    "test": "tape tests/tests.js | tap-spec",
     "devStart": "nodemon index -e 'js, css, html, hbs'"
   },
   "repository": {
