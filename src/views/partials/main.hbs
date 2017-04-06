@@ -2,11 +2,11 @@
   <div class="content__container">
 
     {{#each articles}}
-
+    
     <article class="item__card">
       <header class="item__header">
-        <img class="item__avatar" src="http://www2.mmu.ac.uk/media/mmuacuk/content/images/health-professions/student-profile-simone-bianchi-piantini.jpg" alt="author avatar" />
-        <div class="item__author">Mike Jones</div>
+        <img class="item__avatar" src="{{../credentials.avatar}}" alt="author avatar" />
+        <div class="item__author">{{../credentials.username}}</div>
         <div class="item__date">14 March 2017</div>
       </header>
 

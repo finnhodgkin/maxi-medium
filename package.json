@@ -22,10 +22,12 @@
   },
   "homepage": "https://github.com/bo-bok/mmedium#readme",
   "dependencies": {
+    "bcrypt": "^1.0.2",
     "env2": "^2.1.1",
     "handlebars": "^4.0.6",
     "hapi": "^16.1.1",
     "hapi-auth-cookie": "^7.0.0",
+    "hapi-context-credentials": "^2.0.0",
     "inert": "^4.2.0",
     "istanbul": "^0.4.5",
     "pg": "^6.1.5",
