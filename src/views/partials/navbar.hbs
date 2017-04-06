@@ -33,11 +33,15 @@
        Write a story
     </a>
 
-    {{#unless credentials.username}}
-    <a href="/login" class="header__link header__link--login header__link--accent">
-      Log in / Sign up
+    {{#if credentials.username}}
+    <a href="/logout" class="header__link header__link--login header__link--accent">
+      Sign out
     </a>
-    {{/unless}}
+    {{else}}
+    <a href="/login" class="header__link header__link--login header__link--accent">
+      Log in
+    </a>
+    {{/if}}
 
     <form class="search__form" action="/search" method="get">
       <svg class="search__icon" viewBox="0 0 25 25">

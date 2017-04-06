@@ -5,4 +5,5 @@ module.exports = [
   require('./public'),
   require('./login'),
   require('./login_post'),
+  require('./logout'),
 ];
