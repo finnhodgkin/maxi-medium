@@ -8,9 +8,9 @@
   },
   "scripts": {
     "start": "node index",
+    "devStart": "nodemon index -e 'js, css, html, hbs'",
     "pretest": "ENV=testing node database_build/db_build.js",
-    "test": "tape tests/tests.js | tap-spec",
-    "devStart": "nodemon index -e 'js, css, html, hbs'"
+    "test": "tape tests/tests.js | tap-spec"
   },
   "repository": {
     "type": "git",
