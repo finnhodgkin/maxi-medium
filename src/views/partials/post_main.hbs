@@ -1,6 +1,6 @@
-<main class="post__main">
-    <section class="post__container">
-
+<main class="content__main">
+    <section>
+      <div class="content__container">
         <form class="postForm" method="POST" action="/submitpost">
             <label class="postForm__label" for="postTitle">Title
       <input class= "postForm__input" id="postTitle" type="text"></input>
@@ -11,8 +11,11 @@
       </label>
 
             <label class="postForm__label" for="postBody">Post
-      <input class="postForm__input" id="postBody" type="text"></input>
+      <textarea class="postForm__textarea" id="postBody" type="text"></textarea>
       </label>
 
             <button type="submit" class="postForm__button">Submit Your Story</button>
 </form>
+</div>
+</section>
+</main>
