@@ -10,17 +10,17 @@ module.exports = {
     const password = req.payload.password;
 
     auth(username, (err, user) => {
-      if (err) { return reply.view('login'); }
+      if (err) { return reply.view('login_register'); }
       const avatar = user.avatar_url;
 
       bcrypt.compare(password, user.password, (err, isAuthenticated) => {
-        if (err) { return reply.view('login', {isAuthenticated: false}); }
+        if (err) { return reply.view('login_register', {isAuthenticated: false}); }
 
         if (isAuthenticated) {
           req.cookieAuth.set({username, avatar});
           reply.redirect('/');
         } else {
-          reply.view('login');
+          reply.view('login_register');
         }
       });
     });

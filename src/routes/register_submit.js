@@ -1,7 +1,4 @@
-const bcrypt = require('bcrypt');
-
 const post = require('./../database/post');
-const auth = require('./../database/auth');
 
 module.exports = {
   method: 'POST',
@@ -13,30 +10,15 @@ module.exports = {
       avatar_url: req.payload.avatar_url,
     };
 
-    post.registerUser(newUser, (err, res) => {
-      console.log('=====', err);
-      console.log('=====', res);
+    post.registerUser(newUser, (err) => {
+      if (err) { return reply.view('login_register'); }
+
+      const username = newUser.username;
+      const avatar = newUser.avatar_url;
+
+      req.cookieAuth.set({ username, avatar });
       reply.redirect('/');
     });
-
-    // const username = req.payload.username;
-    // const password = req.payload.password;
-    //
-    // auth(username, (err, user) => {
-    //   if (err) { return reply.view('login'); }
-    //   const avatar = user.avatar_url;
-    //
-    //   bcrypt.compare(password, user.password, (err, isAuthenticated) => {
-    //     if (err) { return reply.view('login', {isAuthenticated: false}); }
-    //
-    //     if (isAuthenticated) {
-    //       req.cookieAuth.set({username, avatar});
-    //       reply.redirect('/');
-    //     } else {
-    //       reply.view('login');
-    //     }
-    //   });
-    // });
 
   },
 };
