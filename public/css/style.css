@@ -1,0 +1,215 @@
+/*****************************************************************
+$GENERAL
+*****************************************************************/
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 0.85rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  "Segoe UI Symbol";
+  background-color: rgb(250, 250, 250);
+}
+
+
+
+/*****************************************************************
+$NAVBAR
+*****************************************************************/
+.navbar {
+  padding-top: 1rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 1px 1px rgba(0,0,0,.03);
+}
+
+.navbar__container {
+  display: flex;
+  align-items: center;
+  width: 97%;
+  max-width: 62em;
+  margin: 0 auto;
+}
+
+.header__logo--image {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+.header__logo--small-m {
+  fill: rgb(90, 90, 90);
+}
+
+.header__logo--big-m {
+  fill: rgb(140, 140, 140);
+}
+
+.header__link {
+  margin-right: 2rem;
+  font-weight: 300;
+  text-decoration: none;
+  transition: .1s color;
+}
+
+.header__link--new {
+  display: block;
+  margin-left: auto;
+}
+
+.header__link--chromeless {
+  color: #8f8f8f;
+}
+
+.header__link--chromeless:hover {
+  color: #666666;
+}
+
+.header__link--accent {
+  color: #02b875;
+}
+
+.header__link--accent:hover {
+  color: #1c9963;
+}
+
+.search__icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  vertical-align: middle;
+  fill: #8f8f8f;
+  transition: .1s all;
+}
+
+.search__icon:hover {
+  fill: #444;
+  transform: scale(1.04);
+}
+
+.search__input {
+  border: 0;
+  padding-bottom: 0;
+  vertical-align: middle;
+  color: #444;
+  font-size: 0.85rem;
+  font-weight: 100;
+  height: 1rem;
+  line-height: 1rem;
+}
+
+.search__input:focus {
+  outline: 0;
+}
+
+
+
+/*****************************************************************
+$MAIN CONTENT HOME
+*****************************************************************/
+.content__main {
+  padding-top: 2rem;
+}
+
+.content__container {
+  max-width: 62em;
+  margin: 0 auto;
+
+}
+
+.item__card {
+  margin-bottom: 1rem;
+  padding: 1rem 0 1rem 0rem;
+  border: 1px solid rgba(0,0,0,.09);
+  border-radius: 3px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 1px 4px rgba(0,0,0,.04);
+}
+
+@media screen and (min-width: 48em) {
+  .item__card {
+    padding: 1rem 1rem 2rem 1rem;
+  }
+}
+
+.item__header {
+  display: flex;
+  align-items: center;
+  width: 97%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0.6rem;
+}
+
+@media screen and (min-width: 48em) {
+  .item__header {
+    width: 100%;
+  }
+}
+
+.item__avatar {
+  width: 2.2rem;
+  height: 2.2rem;
+  margin-right: 0.6rem;
+  border-radius: 50%;
+}
+
+.item__date {
+  margin-left: auto;
+  color: #8f8f8f;
+}
+
+.item__link--article {
+  text-decoration: none;
+}
+
+.item__image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 0.6rem;
+}
+
+.item__title {
+  width: 97%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0.6rem;
+  color: rgb(51, 51, 51);
+}
+
+@media screen and (min-width: 48em) {
+  .item__title {
+    width: 100%;
+  }
+}
+
+.item__summary {
+  width: 97%;
+  margin-left: auto;
+  margin-right: auto;
+  color: #8f8f8f;
+}
+
+@media screen and (min-width: 48em) {
+  .item__summary {
+    width: 100%;
+  }
+}
+
+
+
+/*****************************************************************
+$FOOTER
+*****************************************************************/
+.footer__container {
+  max-width: 62em;
+  margin: 0 auto;
+  border: 1px solid #000;
+}

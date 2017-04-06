@@ -5,9 +5,9 @@ module.exports = {
     hbs: handlebars,
   },
   path: 'views',
-  layout: 'default',
   relativeTo: __dirname,
+  layout: 'default',
   layoutPath: 'views/layouts',
   partialsPath: 'views/partials',
-  // helpersPath: 'views/helpers', Removed this for the time being as we don't have any helpers set up right now
+  helpersPath: 'views/helpers',
 };
