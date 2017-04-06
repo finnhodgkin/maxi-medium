@@ -35,6 +35,7 @@ $NAVBAR
 .navbar__container {
   display: flex;
   align-items: center;
+  width: 97%;
   max-width: 62em;
   margin: 0 auto;
 }
@@ -57,17 +58,11 @@ $NAVBAR
   font-weight: 300;
   text-decoration: none;
   transition: .1s color;
-  /*border: 1px solid #000;*/
 }
 
 .header__link--new {
   display: block;
   margin-left: auto;
-  /*margin-right: 2rem;*/
-}
-
-.header__link--login {
-  /*margin-left: 2rem;*/
 }
 
 .header__link--chromeless {
@@ -86,18 +81,12 @@ $NAVBAR
   color: #1c9963;
 }
 
-.search__form {
-  /*display: inline-block;*/
-}
-
 .search__icon {
-  /*display: inline-block;*/
   width: 1.6rem;
   height: 1.6rem;
   vertical-align: middle;
   fill: #8f8f8f;
   transition: .1s all;
-  /*border: 1px solid #000;*/
 }
 
 .search__icon:hover {
@@ -106,7 +95,6 @@ $NAVBAR
 }
 
 .search__input {
-  /*border: solid 1px black;*/
   border: 0;
   padding-bottom: 0;
   vertical-align: middle;
@@ -123,10 +111,8 @@ $NAVBAR
 
 
 
-
-
 /*****************************************************************
-$MAIN CONTENT
+$MAIN CONTENT HOME
 *****************************************************************/
 .content__main {
   padding-top: 2rem;
@@ -135,7 +121,7 @@ $MAIN CONTENT
 .content__container {
   max-width: 62em;
   margin: 0 auto;
-  /*border: 1px solid #000;*/
+
 }
 
 .item__card {
