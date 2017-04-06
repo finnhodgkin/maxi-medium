@@ -75,3 +75,24 @@ image_url | character varying(100) | not null
 ## Learnings
 
 - We made our wireframes using this website: [moqup.com](https://app.moqups.com/edit/page/ad64222d5)
+
+- Setting up a test database:
+1. Open Postgres elephant app
+2. run ```psql``` in the terminal
+3. create a test database: ```CREATE DATABASE testDatabaseName```
+4. run ```\c testDatabaseName```
+5. run ```\i ./database_build/db_build.sql``` or the path to your sql filter
+6. Create a config-test.env and add the test DATABASE_URL to this file (don't forget to add this file to .gitignore)
+7. set environmental variable to test, under scripts in package.json add the following: ```"pretest": "ENV=testing node database_build/db_build.js",
+"test": "tape tests/tests.js | tap-spec",```
+8. Add the following to db_connect.js:
+
+```sh
+const environment = require('env2');
+
+if (process.env.ENV === 'testing') {
+  environment('config-test.env');
+} else {
+  environment('config.env');
+}
+```
