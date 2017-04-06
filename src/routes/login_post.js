@@ -11,10 +11,14 @@ module.exports = {
 
     auth(username, (err, user) => {
       if (err) { return reply.view('login'); }
+      const avatar = user.avatar_url;
 
       bcrypt.compare(password, user.password, (err, isAuthenticated) => {
         if (err) { return reply.view('login', {isAuthenticated: false}); }
 
+        if (isAuthenticated) {
+          req.cookieAuth.set({username, avatar});
+        }
         reply.view('test', {username, password, isAuthenticated});
       });
     });
