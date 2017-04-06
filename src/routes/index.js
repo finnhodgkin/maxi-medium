@@ -3,4 +3,5 @@ module.exports = [
   // require('./article'),
   require('./new_article'),
   require('./public'),
+  require('./submit')
 ];
