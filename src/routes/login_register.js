@@ -1,7 +1,7 @@
 module.exports = {
   method: 'GET',
-  path: '/login',
+  path: '/login-register',
   handler: (req, reply) => {
-    reply.view('login');
+    reply.view('login_register');
   },
 };

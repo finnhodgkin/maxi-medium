@@ -2,18 +2,18 @@
   <div class="content__container">
 
     {{#each articles}}
-    
+
     <article class="item__card">
       <header class="item__header">
-        <img class="item__avatar" src="{{../credentials.avatar}}" alt="author avatar" />
-        <div class="item__author">{{../credentials.username}}</div>
+        <img class="item__avatar" src="{{avatar_url}}" alt="author avatar" />
+        <div class="item__author">{{username}}</div>
         <div class="item__date">14 March 2017</div>
       </header>
 
       <a href="/article/{{article_id}}" class="item__link--article">
         <img class="item__image" src="{{image_url}}" alt=""/>
         <h3 class="item__title">{{title}}</h3>
-        <p class="item__summary">{{shortenBody body_text}}</p>
+        <p class="item__summary">{{body_text}}</p>
       </a>
     </article>
 
