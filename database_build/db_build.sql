@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS users, articles CASCADE;
 CREATE TABLE users (
   id          SERIAL        PRIMARY KEY,
   username    VARCHAR(64)   UNIQUE NOT NULL,
-  password    VARCHAR(128)  NOT NULL,
+  password    VARCHAR(64)  NOT NULL,
   avatar_url  VARCHAR(500)
 );
 
@@ -18,8 +18,10 @@ CREATE TABLE articles (
 );
 
 INSERT INTO users (username, password, avatar_url)
-VALUES ('Jessica', 'fish', './images/jessica_headshot.jpg'),
-       ('Finn', 'dog', './images/finn_headshot.jpg'),
+VALUES ('u1', '$2a$10$z.hMdUW5o1U.W95Vg/u.GOb65q6fRtsQY6mlykvbMZEHST2dASwz.', './images/jessica_headshot.jpg'),
+       ('u2', '$2a$10$6.m3YwrAjslzM2nUnwOMG.CSm2aVAfJrJxJOdU19eORVOHqz4UwDW', './images/finn_headshot.jpg'),
+       ('Jessica', 'fish', './images/jessica_headshot.jpg'),
+       ('Finn', 'horse', './images/finn_headshot.jpg'),
        ('Alice', 'cat', './images/alice_headshot.jpg'),
        ('Piotr', 'orange', './images/piotr_headshot.jpg');
 

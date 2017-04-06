@@ -9,8 +9,8 @@ module.exports = {
         console.log(err);
         return;
       }
-      // console.log(articles);
-      reply.view('index', {articles:articles, isAuthenticated:true});
+
+      reply.view('index', {articles:articles, isAuthenticated:false});
     });
   },
 };

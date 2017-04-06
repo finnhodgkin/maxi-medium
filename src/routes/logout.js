@@ -1,7 +1,8 @@
 module.exports = {
   method: 'GET',
-  path: '/login',
+  path: '/logout',
   handler: (req, reply) => {
-    reply.view('login');
+    req.cookieAuth.clear();
+    reply.redirect('/');
   },
 };
