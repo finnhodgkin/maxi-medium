@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt');
+
 const auth = require('./../database/auth');
 
 module.exports = {
@@ -7,7 +9,15 @@ module.exports = {
     const username = req.payload.username;
     const password = req.payload.password;
 
-    const data = {username, password};
-    reply.view('test', data);
+    auth(username, (err, user) => {
+      if (err) { return reply.view('login'); }
+
+      bcrypt.compare(password, user.password, (err, isAuthenticated) => {
+        if (err) { return reply.view('login', {isAuthenticated: false}); }
+
+        reply.view('test', {username, password, isAuthenticated});
+      });
+    });
+
   },
 };
