@@ -1,6 +1,5 @@
 module.exports = [
   require('./home'),
-  // require('./article'),
   require('./write_a_story'),
   require('./post_a_story'),
   require('./public'),
