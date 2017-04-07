@@ -33,9 +33,12 @@ post.registerUser = ({username, password, avatar_url}, callback) => {
 };
 
 
-post.articles = (newArticle, date, callback) => {
+
+post.articles = (newArticle, callback) => {
+
   connect.query(`INSERT INTO articles (author_id, title, body_text, image_url, date_posted)
-                 VALUES (1, '${newArticle.title}', '${newArticle.body_text}', '${newArticle.image_url}', ${date}) RETURNING id`, (err, res) => {
+                 VALUES ((SELECT users.id FROM users WHERE users.username = $1), $2, $3, $4, $5)
+                 RETURNING id`, [newArticle.username, newArticle.title, newArticle.body_text, newArticle.image_url, newArticle.date ], (err, res) => {
 
     if (err) return callback(err);
 
