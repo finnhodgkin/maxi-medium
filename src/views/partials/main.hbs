@@ -10,7 +10,8 @@
         <div class="item__date">{{formatDate date_posted}}</div>
       </header>
 
-      <img class="item__image" src="{{image_url}}" alt=""/>
+      <div class="item__image" style="background-image:url({{image_url}})">
+      </div>
       <h3 class="item__title">{{title}}</h3>
       <p class="item__summary">{{body_text}}</p>
     </article>
