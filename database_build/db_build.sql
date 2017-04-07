@@ -14,7 +14,8 @@ CREATE TABLE articles (
   author_id   INTEGER         REFERENCES users(id),
   title       VARCHAR(100)    NOT NULL,
   body_text   VARCHAR(20000)  NOT NULL,
-  image_url   VARCHAR(500)
+  image_url   VARCHAR(500),
+  date_posted VARCHAR(50)
 );
 
 INSERT INTO users (username, password, avatar_url)
@@ -25,7 +26,7 @@ VALUES ('u1', '$2a$10$z.hMdUW5o1U.W95Vg/u.GOb65q6fRtsQY6mlykvbMZEHST2dASwz.', '.
        ('Alice', 'cat', './images/alice_headshot.jpg'),
        ('Piotr', 'orange', './images/piotr_headshot.jpg');
 
-INSERT INTO articles (author_id, title, body_text, image_url)
+INSERT INTO articles (author_id, title, body_text, image_url, date_posted)
 VALUES (1, 'how to feed your fish', 'Aenean lacinia bibendum nulla sed consectetur.
 
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Curabitur blandit tempus porttitor.
@@ -34,7 +35,7 @@ VALUES (1, 'how to feed your fish', 'Aenean lacinia bibendum nulla sed consectet
 
         Maecenas faucibus mollis interdum. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla. Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
 
-        Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis. Curabitur blandit tempus porttitor.', 'http://placehold.it/1000x300'),
+        Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis. Curabitur blandit tempus porttitor.', 'http://placehold.it/1000x300', 1491476523775),
 
         (2, 'how to feed your dog', 'Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Curabitur blandit tempus porttitor.
 
@@ -42,6 +43,6 @@ VALUES (1, 'how to feed your fish', 'Aenean lacinia bibendum nulla sed consectet
 
         Maecenas faucibus mollis interdum. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla. Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
 
-        Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis. Curabitur blandit tempus porttitor.', 'http://placehold.it/1000x300');
+        Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis. Curabitur blandit tempus porttitor.', 'http://placehold.it/1000x300', 1491562292752);
 
 COMMIT;
