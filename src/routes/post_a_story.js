@@ -5,12 +5,12 @@ module.exports = {
   path: '/write-a-story',
   handler: (req, reply) => {
 
-    post.articles(req.payload, (err) => {
+    post.articles(req.payload, Date.now(), (err) => {
       if (err) {
         console.log(err);
         return;
       }
       reply.redirect('/');
-    })
+    });
   }
-}
+};
