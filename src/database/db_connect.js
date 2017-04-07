@@ -1,6 +1,14 @@
 const { Pool } = require('pg');
-const env = require('env2')('./config.env');
 const url = require('url');
+
+
+const environment = require('env2');
+
+if (process.env.ENV === 'testing') {
+  environment('config-test.env');
+} else {
+  environment('config.env');
+}
 
 if (!process.env.DATABASE_URL) {
   throw new Error('DATABASE_URL missing from .env.');

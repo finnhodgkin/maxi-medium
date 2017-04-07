@@ -7,10 +7,10 @@
     "test": "tests"
   },
   "scripts": {
-    "pretest": "ENV=testing node database_build/db_build.js",
-    "test": "tape tests/tests.js | tap-spec",
     "start": "node index",
-    "devStart": "nodemon index -e 'js, css, html, hbs'"
+    "devStart": "nodemon index -e 'js, css, html, hbs'",
+    "pretest": "ENV=testing node database_build/db_build.js",
+    "test": "tape tests/tests.js | tap-spec"
   },
   "repository": {
     "type": "git",
