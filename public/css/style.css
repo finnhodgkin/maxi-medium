@@ -172,7 +172,9 @@ $MAIN CONTENT HOME
 
 .item__image {
   width: 100%;
-  height: auto;
+  height: 16rem;
+  background-size: cover;
+  background-position: center;
   margin-bottom: 0.6rem;
 }
 
