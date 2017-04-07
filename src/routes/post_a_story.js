@@ -5,12 +5,16 @@ module.exports = {
   path: '/write-a-story',
   handler: (req, reply) => {
 
-    post.articles(req.payload, (err) => {
+    // use object keys instead of below
+    const newArticle = req.payload;
+    newArticle.username = req.auth.credentials.username;
+
+    post.articles(newArticle, (err) => {
       if (err) {
         console.log(err);
         return;
       }
       reply.redirect('/');
-    })
+    });
   }
-}
+};
