@@ -19,29 +19,13 @@ CREATE TABLE articles (
 
 INSERT INTO users (username, password, avatar_url)
 VALUES ('u1', '$2a$10$z.hMdUW5o1U.W95Vg/u.GOb65q6fRtsQY6mlykvbMZEHST2dASwz.', './images/jessica_headshot.jpg'),
-       ('u2', '$2a$10$6.m3YwrAjslzM2nUnwOMG.CSm2aVAfJrJxJOdU19eORVOHqz4UwDW', './images/finn_headshot.jpg'),
-       ('Jessica', 'fish', './images/jessica_headshot.jpg'),
-       ('Finn', 'horse', './images/finn_headshot.jpg'),
-       ('Alice', 'cat', './images/alice_headshot.jpg'),
-       ('Piotr', 'orange', './images/piotr_headshot.jpg');
+       ('u2', '$2a$10$6.m3YwrAjslzM2nUnwOMG.CSm2aVAfJrJxJOdU19eORVOHqz4UwDW', './images/finn_headshot.jpg');
 
 INSERT INTO articles (author_id, title, body_text, image_url)
-VALUES (1, 'how to feed your fish', 'Aenean lacinia bibendum nulla sed consectetur.
+VALUES (1, 'Computers are really great', 'Aenean lacinia bibendum nulla sed consectetur.
 
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Curabitur blandit tempus porttitor.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Curabitur blandit tempus porttitor.', 'https://images.unsplash.com/photo-1430692032771-aae00435a3ff?dpr=1&auto=format&fit=crop&w=1080&h=NaN&q=80&cs=tinysrgb&crop=&bg='),
 
-        Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean lacinia bibendum nulla sed consectetur. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
-
-        Maecenas faucibus mollis interdum. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla. Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-
-        Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis. Curabitur blandit tempus porttitor.', 'http://placehold.it/1000x300'),
-
-        (2, 'how to feed your dog', 'Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Curabitur blandit tempus porttitor.
-
-        Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean lacinia bibendum nulla sed consectetur. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
-
-        Maecenas faucibus mollis interdum. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla. Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-
-        Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis. Curabitur blandit tempus porttitor.', 'http://placehold.it/1000x300');
+        (2, 'I really like the outdoors', 'Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Curabitur blandit tempus porttitor.', 'https://images.unsplash.com/photo-1477777404980-710a373f2d7e?dpr=1&auto=format&fit=crop&w=1080&h=NaN&q=80&cs=tinysrgb&crop=&bg=');
 
 COMMIT;
