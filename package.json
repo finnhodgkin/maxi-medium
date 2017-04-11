@@ -32,6 +32,7 @@
     "hapi-context-credentials": "^2.0.0",
     "inert": "^4.2.0",
     "istanbul": "^0.4.5",
+    "marked": "^0.3.6",
     "pg": "^6.1.5",
     "vision": "^4.1.1"
   },

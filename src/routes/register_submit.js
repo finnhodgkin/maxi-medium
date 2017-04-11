@@ -3,6 +3,9 @@ const post = require('./../database/post');
 module.exports = {
   method: 'POST',
   path: '/register',
+  config: {
+    auth: { mode: 'try' },
+  },
   handler: (req, reply) => {
     const newUser = {
       username: req.payload.username,

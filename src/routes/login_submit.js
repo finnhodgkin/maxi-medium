@@ -5,6 +5,9 @@ const auth = require('./../database/auth');
 module.exports = {
   method: 'POST',
   path: '/login',
+  config: {
+    auth: { mode: 'try' },
+  },
   handler: (req, reply) => {
     const username = req.payload.username;
     const password = req.payload.password;
@@ -18,12 +21,10 @@ module.exports = {
 
         if (isAuthenticated) {
           req.cookieAuth.set({username, avatar});
-          reply.redirect('/');
-        } else {
-          reply.view('login_register');
+          reply.redirect('/test');
         }
       });
-    });
 
+    });
   },
 };
