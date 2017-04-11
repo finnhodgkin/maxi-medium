@@ -8,5 +8,4 @@ module.exports = [
   require('./login_submit'),
   require('./register_submit'),
   require('./logout'),
-  require('./test'),
 ];
