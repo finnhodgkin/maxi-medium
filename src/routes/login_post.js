@@ -21,7 +21,7 @@ module.exports = {
 
         if (isAuthenticated) {
           req.cookieAuth.set({username, avatar});
-          reply.redirect('/test');
+          reply.redirect('/');
         }
       });
 
