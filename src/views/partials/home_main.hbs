@@ -1,0 +1,28 @@
+<main class="content__main">
+  <div class="content__container">
+
+    {{#if error}}
+      {{> error}}
+    {{/if}}
+
+    {{#if articles}}
+      {{#each articles}}
+
+      <article class="item__card">
+        <header class="item__header">
+          <img class="item__avatar" src="{{avatar_url}}" alt="author avatar" />
+          <div class="item__author">{{first_name}} {{last_name}}</div>
+          <div class="item__date">{{formatDate date_posted}}</div>
+        </header>
+
+        <div class="item__image" style="background-image:url({{image_url}})">
+        </div>
+        <h3 class="item__title">{{title}}</h3>
+        <p class="item__summary">{{{body_text}}}</p>
+      </article>
+
+      {{/each}}
+    {{/if}}
+
+  </div>
+</main>

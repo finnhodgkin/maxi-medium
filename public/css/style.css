@@ -54,7 +54,7 @@ $NAVBAR
 }
 
 .header__link {
-  margin-right: 2rem;
+  margin-right: 1rem;
   font-weight: 300;
   text-decoration: none;
   transition: .1s color;
@@ -82,8 +82,8 @@ $NAVBAR
 }
 
 .search__icon {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 1.5rem;
+  height: 1.5rem;
   vertical-align: middle;
   fill: #8f8f8f;
   transition: .1s all;
@@ -95,19 +95,65 @@ $NAVBAR
 }
 
 .search__input {
+  max-width: 6rem;
   border: 0;
-  padding-bottom: 0;
   vertical-align: middle;
   color: #444;
   font-size: 0.85rem;
   font-weight: 100;
-  height: 1rem;
-  line-height: 1rem;
 }
 
 .search__input:focus {
   outline: 0;
 }
+
+.navbar__profile-container {
+  position: relative;
+}
+
+.navbar__user-avatar {
+  margin-left: 0.5rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.navbar__user-popover {
+  position: absolute;
+  right: 0%;
+  top: 137%;
+  width: 300%;
+  display: none;
+  flex-direction: column;
+  padding: 1rem 1rem;
+  border-radius: 3px;
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(0,0,0,.25), 0 0 1px rgba(0,0,0,.35);
+}
+
+.navbar__user-popover--active {
+  display: flex;
+}
+
+.user-popover__link {
+  font-weight: 300;
+  text-decoration: none;
+  transition: .1s color;
+}
+
+.user-popover__link:not(:last-child) {
+  margin-bottom: 0.8rem;
+}
+
+.user-popover__link--chromeless {
+  color: #8f8f8f;
+}
+
+.user-popover__link--chromeless:hover {
+  color: #666666;
+}
+
 
 
 
@@ -127,7 +173,8 @@ $MAIN CONTENT HOME
 .item__card {
   margin-bottom: 1rem;
   padding: 1rem 0 1rem 0rem;
-  border: 1px solid rgba(0,0,0,.09);
+  border-top: 1px solid rgba(0,0,0,.09);
+  border-bottom: 1px solid rgba(0,0,0,.09);
   border-radius: 3px;
   background-color: rgb(255, 255, 255);
   box-shadow: 0 1px 4px rgba(0,0,0,.04);
@@ -136,6 +183,7 @@ $MAIN CONTENT HOME
 @media screen and (min-width: 48em) {
   .item__card {
     padding: 1rem 1rem 2rem 1rem;
+    border: 1px solid rgba(0,0,0,.09);
   }
 }
 
@@ -205,22 +253,58 @@ $MAIN CONTENT HOME
   }
 }
 
+
+
 /*****************************************************************
 $MAIN CONTENT POST
 *****************************************************************/
-
-.postForm {
-  width: 100%;
+.story-form__card {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem 1rem 1rem;
+  border: 1px solid rgba(0,0,0,.09);
+  border-radius: 3px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 1px 4px rgba(0,0,0,.04);
 }
 
-.postForm__input {
-  width: 100%;
+@media screen and (min-width: 48em) {
+  .story-form__card {
+    padding: 1rem 1rem 1rem 1rem;
+  }
 }
 
-.postForm__textarea {
-  width: 100%;
-  height: 100%;
+.story__input--title {
+
 }
+
+.story__input--title, .story__input--body, .story__input--image-url {
+  margin-bottom: 0.7rem;
+  padding: 0.6rem;
+  border: solid 1px #dfdfdf;
+  border-radius: 2px;
+}
+
+.story__input--body {
+  height: 20rem;
+}
+
+.story-form__btn {
+  width: 100%;
+  margin-top: 0.7rem;
+  padding: 0.7rem;
+  background-color: #02b875;
+  color: white;
+  border: 0;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.story-form__btn:hover {
+  background-color: #1c9963;
+}
+
+
 
 /*****************************************************************
 $FOOTER
@@ -229,4 +313,108 @@ $FOOTER
   max-width: 62em;
   margin: 0 auto;
   border: 1px solid #000;
+}
+
+
+
+/*****************************************************************
+$LOGIN DIALOG
+*****************************************************************/
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  background-color: rgba(0,0,0,0.8);
+  overflow: auto;
+}
+
+.overlay-active {
+  display: flex;
+}
+
+.dialog {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 30em;
+  margin: 0 auto;
+  padding: 1rem;
+  border: 1px solid rgba(0,0,0,.09);
+  border-radius: 3px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 1px 4px rgba(0,0,0,.04);
+}
+
+.dialog__btn--close {
+  width: 2rem;
+  margin-left: auto;
+  padding: 0.5rem;
+  background-color: #bbb;
+  color: white;
+  border: 0;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.dialog__btn--close:hover {
+  background-color: #aaa;
+}
+
+.login-form, .register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form {
+  margin-bottom: 1rem;
+}
+
+.login-form__input, .register-form__input {
+  margin-top: 0.7rem;
+  padding: 0.6rem;
+  border: solid 1px #dfdfdf;
+  border-radius: 2px;
+}
+
+.login-form__error, .register-form__error, .story-form__error {
+  color: tomato;
+}
+
+.login-form__btn--submit, .register-form__btn--submit {
+  width: 100%;
+  margin-top: 0.7rem;
+  padding: 0.7rem;
+  background-color: #02b875;
+  color: white;
+  border: 0;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.login-form__btn--submit:hover, .register-form__btn--submit:hover {
+  background-color: #1c9963;
+}
+
+
+
+/*****************************************************************
+$ERRORS
+*****************************************************************/
+.error__card {
+  margin-bottom: 1rem;
+  padding: 2rem;
+  border: 1px solid rgba(0,0,0,.09);
+  border-radius: 3px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 1px 4px rgba(0,0,0,.04);
+}
+
+.error__message {
+  color: #8f8f8f;
+  text-align: center;
 }
