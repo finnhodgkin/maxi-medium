@@ -34,10 +34,10 @@
 
     {{#if credentials.username}}
       <div class="navbar__profile-container">
-        <img tabindex="0" class="navbar__user-avatar" src="{{credentials.avatar_url}}" id="js-user-avatar"/>
+        <img class="navbar__user-avatar" src="{{credentials.avatar_url}}" id="js-user-avatar"/>
         <div class="navbar__user-popover" id="js-navbar-popover">
-          <a href="/@{{credentials.user_username}}" class="user-popover__link user-popover__link--chromeless">
-            Edit profile
+          <a href="/@{{credentials.username}}" class="user-popover__link user-popover__link--chromeless">
+            Edit profile TBA
           </a>
           <a href="/logout" class="user-popover__link user-popover__link--chromeless">
             Sign out

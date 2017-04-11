@@ -14,13 +14,13 @@ module.exports = {
 
     auth(username, (err, user) => {
       if (err) { return reply.view('login_register'); }
-      const avatar = user.avatar_url;
+      const { avatar_url } = user;
 
       bcrypt.compare(password, user.password, (err, isAuthenticated) => {
         if (err) { return reply.view('login_register', {isAuthenticated: false}); }
 
         if (isAuthenticated) {
-          req.cookieAuth.set({username, avatar});
+          req.cookieAuth.set({username, avatar_url});
           reply.redirect('/');
         }
       });
