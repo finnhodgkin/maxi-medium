@@ -12,29 +12,29 @@ We are building a simple blog posting web application that allows users to log i
 ## User Stories
 
 As a user, I want to be able to:
-- [ ] Post new blog posts
-- [ ] Log into my account with a password
-- [ ] Attach my author name to the posts I write, and view the authors of others
-- [ ] Browse a feed of the most recent posts
+- [x] Post new blog posts
+- [x] Log into my account with a password
+- [x] Attach my author name to the posts I write, and view the authors of others
+- [x] Browse a feed of the most recent posts
 - [ ] Attach an image to my posts
 
 ## Goals
-- [ ] Be able to submit new blog posts
-- [ ] Create a newsfeed of blog posts, showing image, title, date and time posted, and author
-- [ ] Order newsfeed by most recent
+- [x] Be able to submit new blog posts
+- [x] Create a newsfeed of blog posts, showing image, title, date and time posted, and author
+- [x] Order newsfeed by most recent
 - [ ] Click on each item on newsfeed to open the post in a new page
-- [ ] Include login page
-- [ ] Include home page button that directs to newsfeed
+- [x] Include login page
+- [x] Include home page button that directs to newsfeed
 - [ ] BEM
 
 ## Stretch Goals
 - [ ] Loading Scroll
-- [ ] Authentication
-- [ ] Add user image to profile
+- [x] Authentication
+- [x] Add user image to profile
 - [ ] Author link for each post goes to GitHub
-- [ ] Display avatar of logged in user in top right
+- [x] Display avatar of logged in user in top right
 - [ ] Search feature
-- [ ] Markdown capabilities for blog posts
+- [x] Markdown capabilities for blog posts
 - [ ] Markdown preview
 
 ## Wireframe
