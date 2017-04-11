@@ -11,7 +11,8 @@
     "devStart": "nodemon index -e 'js, css, html, hbs'",
     "pretest": "ENV=testing node database_build/db_build.js",
     "test": "tape tests/tests.js | tap-spec",
-    "coverage": "istanbul cover tests/tests.js"
+    "coverage": "istanbul cover tests/tests.js",
+    "dbBuild": "node database_build/db_build.js"
   },
   "repository": {
     "type": "git",
