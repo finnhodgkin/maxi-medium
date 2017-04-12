@@ -27,19 +27,6 @@ tape('check the home route', (t) => {
 });
 
 
-tape('check the home route', (t) => {
-  var options = {
-    url: '/login-register',
-    method: 'GET',
-  };
-  server.inject(options, (res) => {
-    console.log('====== login get stcode', res.statusCode);
-    t.equal(res.statusCode, 200, 'correct home route should return 200');
-    t.end();
-  });
-});
-
-
 
 // How can we check whether this works?
 // tape('check the user login logic', (t) => {
