@@ -2,56 +2,35 @@ const server = require('./../src/server.js');
 const tape = require('tape');
 
 
-tape('check the route with invalid url', (t) => {
-  var options = {
-    url: '/nothing',
-    method: 'GET',
-  };
-  server.inject(options, (res) => {
-    t.equal(res.statusCode, 404, 'Incorrect url should return 404');
-    t.end();
+const routes = [
+  {url: '/', method: 'GET', statusCode: 200, payload: 'DOCTYPE html'},
+  {url: '/some-bad-url', method: 'GET', statusCode: 404},
+  {url: '/github-auth', method: 'GET', statusCode: 302},
+  {url: '/login-with-github', method: 'GET', statusCode: 302},
+  {url: '/login', method: 'POST', statusCode: 500},
+  {url: '/register', method: 'POST', statusCode: 500},
+  {url: '/write-a-story', method: 'GET', statusCode: 302},
+  {url: '/write-a-story', method: 'POST', statusCode: 302},
+  {url: '/write-a-story-preview', method: 'POST', statusCode: 302},
+  {url: '/logout', method: 'GET', statusCode: 302},
+  {url: '/css/style.css', method: 'GET', statusCode: 200},
+  {url: '/css/style.css', method: 'GET', statusCode: 200},
+
+];
+
+
+routes.forEach(route => {
+  tape(`${route.url} ${route.method} route`, (t) => {
+    var options = {
+      url: route.url,
+      method: route.method,
+    };
+    server.inject(options, (res) => {
+      t.equal(res.statusCode, route.statusCode, `statusCode should be ${route.statusCode}`);
+      if (route.payload) {
+        t.ok(res.payload.indexOf(route.payload) !== -1, 'correct payload should be served');
+      }
+      t.end();
+    });
   });
 });
-
-
-tape('check the home route', (t) => {
-  var options = {
-    url: '/',
-    method: 'GET',
-  };
-  server.inject(options, (res) => {
-    t.equal(res.statusCode, 200, 'correct home route should return 200');
-    t.ok(res.payload.indexOf('DOCTYPE html') !== -1, 'html page should be served');
-    t.end();
-  });
-});
-
-
-
-// How can we check whether this works?
-// tape('check the user login logic', (t) => {
-//   var options = {
-//     url: '/login',
-//     method: 'POST',
-//     payload: {username: 'u1', password: 'pwd'}
-//   };
-//
-//
-//   server.inject(options, (res) => {
-//     console.log('=====');
-//     t.ok(true, 'should');
-//     t.end();
-//   });
-// });
-
-
-// tape('check the submitpost route', (t) => {
-//   var options = {
-//     url: '/submitpost',
-//     method: 'GET',
-//   };
-//   server.inject(options, (res) => {
-//     t.equal(res.statusCode, 200, 'correct submitpost route should return 200');
-//     t.end();
-//   });
-// });

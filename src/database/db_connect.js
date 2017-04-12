@@ -23,6 +23,7 @@ const options = {
   database: params.pathname.split('/')[1],
   max: process.env.DB_MAX_CONNECTIONS || 19,
   ssl: (params.hostname !== 'localhost'),
+  idleTimeoutMillis: process.env.NODE_ENV === 'test' ? 1000 : 30000
 };
 
 if (username) { options.user = username; }
