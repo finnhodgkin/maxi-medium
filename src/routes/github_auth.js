@@ -2,6 +2,7 @@ const request = require('request');
 const qs = require('querystring');
 
 const post = require('./../database/post');
+const githubAuth = require('./../database/github_auth');
 
 
 module.exports = {
@@ -50,11 +51,34 @@ module.exports = {
           avatar_url: userInfo.avatar_url,
         };
 
-        post.registerUser(user, (err) => {
+        // Add a DB check to see if Github user exists
+        // If they don't, register a new user
+        // If they do, update details
+        // Either way: assign a cookie
+
+        githubAuth(user.github_id, (err, userDb) => {
           if (err) { return console.log(err); }
 
+          if (userDb) {
+            const isUserInfoTheSame = Object.keys(userDb).every(key => {
+              return userDb[key] == user[key];
+            });
 
+            // if (!isUserInfoTheSame) {
+            //   post.updateUser(user, (err) => {
+            //
+            //   });
+            // }
+          } else { // NO USER
+            post.registerUser(user, (err) => {
+              if (err) { return console.log(err); }
+            });
+
+          }
+          req.cookieAuth.set({ username: user.username, avatar_url: user.avatar_url });
+          reply.redirect('/');
         });
+
 
 
 
@@ -71,7 +95,6 @@ module.exports = {
 
 
     // redirect to home
-    reply.redirect('/');
 
   }
 };

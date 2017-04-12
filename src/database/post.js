@@ -9,7 +9,7 @@ post.registerUser = ({github_id = null, username, display_name, avatar_url, pass
 
   const selectUserQuery = 'SELECT username FROM users WHERE username = $1;';
   connect.query(selectUserQuery, [username], (err, user) => {
-    if (err) { return callback('Database error'); }
+    if (err) { return callback(new Error('Database error')); }
 
     if (!user.rows[0]) {
       const addUserQuery = `
@@ -18,7 +18,7 @@ post.registerUser = ({github_id = null, username, display_name, avatar_url, pass
       `;
 
       const queryCallback = (err) => {
-        if (err) { return callback('Database error during saving details'); }
+        if (err) { return callback(new Error('Database error during saving details')); }
         callback(null, 'New user added');
       };
 
@@ -28,7 +28,7 @@ post.registerUser = ({github_id = null, username, display_name, avatar_url, pass
         connect.query(addUserQuery, userInfo, queryCallback);
       } else {
         hashPassword(password, (err, hash) => {
-          if (err) { return callback('Sorry, but we have not been able to set up your account'); }
+          if (err) { return callback(new Error('Sorry, but we have not been able to set up your account')); }
 
           const userInfo = [github_id, username, display_name, avatar_url, hash];
           connect.query(addUserQuery, userInfo, queryCallback);
@@ -36,7 +36,7 @@ post.registerUser = ({github_id = null, username, display_name, avatar_url, pass
       }
 
     } else {
-      callback('Sorry that username is taken!');
+      callback(new Error('Sorry that username is taken!'));
     }
   });
 };

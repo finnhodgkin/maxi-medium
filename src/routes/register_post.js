@@ -15,7 +15,7 @@ module.exports = {
     };
 
     post.registerUser(newUser, (err) => {
-      if (err) { return reply.view('index', {error: err}); }
+      if (err) { return reply.view('index', {error: err.message}); }
 
       req.cookieAuth.set({
         username: newUser.username,
