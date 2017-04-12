@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const auth = require('./../database/auth');
 const joi = require('joi');
 const validateLoginRegister = require('./../helper_functions/validate_login_register');
+const handleLoginError = require('./../helper_functions/handle_login_error');
 
 module.exports = {
   method: 'POST',
@@ -21,12 +22,14 @@ module.exports = {
     const password = req.payload.password;
 
     auth(username, (err, user) => {
-      if (err) { return reply.view('index', {error: err}); }
+      if (err) {
+        return reply.view('index', { loginError: err.message, authPrompt: true });
+      }
       const { avatar_url } = user;
 
       bcrypt.compare(password, user.password, (err, isAuthenticated) => {
-        if (err) { return reply.view('index', {error: 'Sorry, we cannot verify your account at the moment'}); }
-        if (!isAuthenticated) { return reply.view('index', {error: 'Sorry, wrong password'}); }
+        if (err) { return reply.view('index', { loginError: 'Error checking your password', authPrompt: true }); }
+        if (!isAuthenticated) { return reply.view('index', { loginError: 'Incorrect password', authPrompt: true }); }
 
         req.cookieAuth.set({username, avatar_url});
         return reply.redirect('/');
