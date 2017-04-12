@@ -51,11 +51,8 @@ module.exports = {
           avatar_url: userInfo.avatar_url,
         };
 
-        // Add a DB check to see if Github user exists
-        // If they don't, register a new user
-        // If they do, update details
-        // Either way: assign a cookie
 
+        // Add a DB check to see if Github user exists
         githubAuth(user.github_id, (err, userDb) => {
           if (err) { return console.log(err); }
 
@@ -64,37 +61,30 @@ module.exports = {
               return userDb[key] == user[key];
             });
 
-            // if (!isUserInfoTheSame) {
-            //   post.updateUser(user, (err) => {
-            //
-            //   });
-            // }
-          } else { // NO USER
+
+            // If they do, update details
+            if (!isUserInfoTheSame) {
+              post.updateUser(user, (err) => {
+                if (err) { return console.log(err); }
+                req.cookieAuth.set({ username: user.username, avatar_url: user.avatar_url });
+                return reply.redirect('/');
+              });
+            }
+          } else {
+            // If they don't, register a new user
             post.registerUser(user, (err) => {
               if (err) { return console.log(err); }
+              // handle a case of github user changling their username in conflict with
+              // an existing user, between sessions
+              req.cookieAuth.set({ username: user.username, avatar_url: user.avatar_url });
+              reply.redirect('/');
             });
-
           }
-          req.cookieAuth.set({ username: user.username, avatar_url: user.avatar_url });
-          reply.redirect('/');
+
+
         });
-
-
-
-
       });
 
     });
-
-
-
-    // create jwt
-
-
-    // save cookie
-
-
-    // redirect to home
-
   }
 };
