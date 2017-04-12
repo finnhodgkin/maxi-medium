@@ -55,6 +55,7 @@ module.exports = {
         // Add a DB check to see if Github user exists
         githubAuth(user.github_id, (err, userDb) => {
           if (err) { return console.log(err); }
+          console.log('running');
 
           if (userDb) {
             const isUserInfoTheSame = Object.keys(userDb).every(key => {
@@ -66,8 +67,6 @@ module.exports = {
             if (!isUserInfoTheSame) {
               post.updateUser(user, (err) => {
                 if (err) { return console.log(err); }
-                req.cookieAuth.set({ username: user.username, avatar_url: user.avatar_url });
-                return reply.redirect('/');
               });
             }
           } else {
@@ -76,12 +75,12 @@ module.exports = {
               if (err) { return console.log(err); }
               // handle a case of github user changling their username in conflict with
               // an existing user, between sessions
-              req.cookieAuth.set({ username: user.username, avatar_url: user.avatar_url });
-              reply.redirect('/');
             });
           }
 
 
+          req.cookieAuth.set({ username: user.username, avatar_url: user.avatar_url });
+          reply.redirect('/');
         });
       });
 

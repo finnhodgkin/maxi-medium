@@ -24,6 +24,7 @@ server.register([inert, vision, cookieAuthModule, contextCredentials], err => {
     ttl: 24 * 60 * 60 * 1000, //@TODO test timing works as expected
     redirectTo: '/',
     redirectOnTry: false,
+    isSameSite: false,
   });
 
   server.views(handlebars);

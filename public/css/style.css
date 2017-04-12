@@ -383,6 +383,8 @@ $LOGIN DIALOG
 
 .login-form__error, .register-form__error, .story-form__error {
   color: tomato;
+  padding: 4px 0 0 0;
+  text-align: center;
 }
 
 .login-form__btn--submit, .register-form__btn--submit {
