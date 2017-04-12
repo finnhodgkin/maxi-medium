@@ -7,13 +7,10 @@ module.exports = {
     auth: { mode: 'try' },
   },
   handler: (req, reply) => {
-    get.articles((err, articles) => {
-      if (err) {
-        console.log(err);
-        return;
-      }
+    get.articles((dbErr, articles) => {
+      if (dbErr) { return reply.view('index', {error: dbErr}); }
 
-      reply.view('index', {articles:articles, isAuthenticated:false});
+      reply.view('index', {articles: articles});
     });
   },
 };

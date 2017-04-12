@@ -11,7 +11,6 @@ const routes = require('./routes');
 const handlebars = require('./handlebars');
 
 server.connection({
-  // host: process.env.HOSTNAME || 'localhost',
   port: process.env.PORT || 4000,
 });
 
@@ -21,9 +20,9 @@ server.register([inert, vision, cookieAuthModule, contextCredentials], err => {
   server.auth.strategy('base', 'cookie', 'required', {
     password: process.env.COOKIE_PASSWORD,
     cookie: 'mmedium-cookie',
-    isSecure: false, //@TODO WHEN ON HEROKU CHANGE TO TRUE
+    isSecure: process.env.NODE_ENV !== 'dev',
     ttl: 24 * 60 * 60 * 1000, //@TODO test timing works as expected
-    redirectTo: '/login-register',
+    redirectTo: '/',
     redirectOnTry: false,
   });
 

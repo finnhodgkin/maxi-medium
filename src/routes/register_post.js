@@ -9,17 +9,20 @@ module.exports = {
   handler: (req, reply) => {
     const newUser = {
       username: req.payload.username,
-      password: req.payload.password,
+      first_name: req.payload.first_name,
+      last_name: req.payload.last_name,
       avatar_url: req.payload.avatar_url,
+      password: req.payload.password,
     };
 
     post.registerUser(newUser, (err) => {
-      if (err) { return reply.view('login_register'); }
+      if (err) { return reply.view('index', {error: err}); }
 
-      const username = newUser.username;
-      const avatar = newUser.avatar_url;
-
-      req.cookieAuth.set({ username, avatar });
+      req.cookieAuth.set({
+        username: newUser.username,
+        first_name: newUser.first_name,
+        avatar_url: newUser.avatar_url,
+      });
       reply.redirect('/');
     });
 

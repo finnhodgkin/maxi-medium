@@ -1,11 +1,11 @@
 module.exports = [
   require('./home'),
-  require('./write_a_story'),
-  require('./post_a_story_prev'),
-  require('./post_a_story'),
   require('./public'),
-  require('./login_register'),
-  require('./login_submit'),
-  require('./register_submit'),
+  require('./login_post'),
+  require('./register_post'),
   require('./logout'),
+  require('./write_a_story'),
+  require('./write_a_story_post'),
+  require('./write_a_story_prev_post'),
+  // require('./login_register'),
 ];

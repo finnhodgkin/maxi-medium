@@ -4,10 +4,10 @@ const url = require('url');
 
 const environment = require('env2');
 
-if (process.env.ENV === 'testing') {
-  environment('config-test.env');
+if (process.env.NODE_ENV === 'test') {
+  environment('./config-test.env');
 } else {
-  environment('config.env');
+  environment('./config.env');
 }
 
 if (!process.env.DATABASE_URL) {
@@ -21,7 +21,7 @@ const options = {
   host: params.hostname,
   port: params.port,
   database: params.pathname.split('/')[1],
-  max: process.env.DB_MAX_CONNECTIONS || 20,
+  max: process.env.DB_MAX_CONNECTIONS || 19,
   ssl: (params.hostname !== 'localhost'),
 };
 

@@ -1,44 +1,27 @@
 <header class="navbar">
   <div class="navbar__container">
 
-    <a href="/" class="header__link--logo">
-      <svg class="header__logo--image" viewBox="0 0 156 136">
-        <g transform="translate(0, 136) scale(0.1,-0.1)">
-          <path class="header__logo--small-m" d="M523 1121 l-32 -210 50 -93 c28 -51 52 -94 54 -96 1 -2 8 42 15 98 7
-          55 16 100 19 100 4 0 34 -53 68 -117 92 -176 77 -174 158 -18 39 74 73 135 76
-          135 3 0 12 -45 19 -100 7 -56 14 -100 15 -98 1 2 26 45 54 96 l51 93 -32 209
-          c-18 116 -35 210 -38 210 -3 0 -52 -88 -108 -195 -57 -107 -107 -195 -111
-          -195 -4 0 -55 88 -112 195 -57 107 -106 195 -109 195 -3 0 -19 -94 -37 -209z"/>
-          <path class="header__logo--big-m" d="M216 1310 c-9 -41 -196 -1254 -196 -1272 0 -17 18 -18 238 -18 l239
-          0 25 178 26 177 -51 98 c-28 53 -53 94 -57 90 -4 -5 -19 -91 -34 -193 -15
-          -102 -30 -195 -33 -207 -4 -20 -12 -22 -99 -25 -78 -2 -94 0 -94 12 0 31 102
-          736 109 754 5 14 65 -89 246 -428 132 -245 242 -446 245 -446 3 0 114 201 245
-          446 177 330 241 441 247 427 6 -17 109 -724 108 -750 0 -10 -26 -13 -94 -13
-          l-94 0 -6 27 c-3 16 -17 109 -32 208 -15 99 -30 183 -33 187 -4 4 -29 -35 -57
-          -87 l-50 -95 25 -180 25 -180 241 0 241 0 -38 243 c-21 133 -65 420 -98 637
-          -34 217 -64 403 -68 413 -5 13 -83 -123 -282 -493 -151 -280 -277 -510 -280
-          -510 -3 0 -124 222 -270 492 -146 270 -270 501 -277 512 -11 21 -11 21 -17 -4z"/>
-        </g>
-      </svg>
-    </a>
+    {{> logo}}
+
 
     {{#if credentials.username}}
+
     <a href="/write-a-story" class="header__link header__link--new header__link--accent">
-    {{else}}
-    <a href="/login-register" class="header__link header__link--new header__link--chromeless">
-    {{/if}}
      Write a story
     </a>
 
-    {{#if credentials.username}}
-    <a href="/logout" class="header__link header__link--login header__link--accent">
-      Sign out
-    </a>
     {{else}}
-    <a href="/login-register" class="header__link header__link--login header__link--accent">
+
+    <a href="/login-register" class="header__link header__link--new header__link--chromeless" id="js-new-story-link">
+     Write a story
+    </a>
+
+    <a href="/login-register" class="header__link header__link--accent" id="js-login-link">
       Log in / Register
     </a>
+
     {{/if}}
+
 
     <form class="search__form" action="/search" method="get">
       <svg class="search__icon" viewBox="0 0 25 25">
@@ -48,10 +31,20 @@
       </svg>
       <input class="search__input" name="q" type="text" placeholder="Search articles" required autocomplete="off"/>
     </form>
-    {{credentials.username}}
 
-
-
+    {{#if credentials.username}}
+      <div class="navbar__profile-container">
+        <img class="navbar__user-avatar" src="{{credentials.avatar_url}}" id="js-user-avatar"/>
+        <div class="navbar__user-popover" id="js-navbar-popover">
+          <a href="/@{{credentials.username}}" class="user-popover__link user-popover__link--chromeless">
+            Edit profile TBA
+          </a>
+          <a href="/logout" class="user-popover__link user-popover__link--chromeless">
+            Sign out
+          </a>
+        </div>
+      </div>
+    {{/if}}
 
 
   </div>

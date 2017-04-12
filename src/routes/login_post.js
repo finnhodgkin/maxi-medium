@@ -13,16 +13,15 @@ module.exports = {
     const password = req.payload.password;
 
     auth(username, (err, user) => {
-      if (err) { return reply.view('login_register'); }
-      const avatar = user.avatar_url;
+      if (err) { return reply.view('index', {error: err}); }
+      const { avatar_url } = user;
 
       bcrypt.compare(password, user.password, (err, isAuthenticated) => {
-        if (err) { return reply.view('login_register', {isAuthenticated: false}); }
+        if (err) { return reply.view('index', {error: 'Sorry, we cannot verify your account at the moment'}); }
+        if (!isAuthenticated) { return reply.view('index', {error: 'Sorry, wrong password'}); }
 
-        if (isAuthenticated) {
-          req.cookieAuth.set({username, avatar});
-          reply.redirect('/test');
-        }
+        req.cookieAuth.set({username, avatar_url});
+        return reply.redirect('/');
       });
 
     });

@@ -1,4 +1,8 @@
-# MMedium's Mini-Medium
+[![Build Status](https://travis-ci.org/finnhodgkin/maxi-medium.svg?branch=master)](https://travis-ci.org/finnhodgkin/maxi-medium)
+[![codecov](https://codecov.io/gh/finnhodgkin/maxi-medium/branch/master/graph/badge.svg)](https://codecov.io/gh/finnhodgkin/maxi-medium)
+
+
+# MMedium's Maxi-Medium
 
 We are building a simple blog posting web application that allows users to log into their account and input new blogs posts that can be viewed in a newsfeed of most recents posts.
 
@@ -54,24 +58,25 @@ We mapped out the following wireframes for our site, that included three differe
 
 ## Schema Diagrams
 
-We used the following schema for the database:
-
-### user
+### users
 Column | Type | Modifiers
 --- | --- | ---
 id | integer | not null default
-username | character varying(100) | not null
-password | character varying(100) | not null
-avatar_url | character varying(100) | not null
+username | character varying(64) | not null
+first_name | character varying(64) | not null
+last_name | character varying(64) | not null
+password | character varying(64) | not null
+avatar_url | character varying(500) | not null
 
-### article
+### stories
 Column | Type | Modifiers
 --- | --- | ---
 id | integer | not null default
-user_id | integer | not null
+author_id | integer | REFERENCES users(id)
 title | character varying(100) | not null
-body_text | character varying(2000) | not null
-image_url | character varying(100) | not null
+body_text | character varying(20000) | not null
+image_url | character varying(500) | not null
+date_posted | character varying(50) | not null
 
 ## Learnings
 
