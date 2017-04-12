@@ -7,6 +7,7 @@ module.exports = [
   './write_a_story',
   './write_a_story_post',
   './write_a_story_prev_post',
-  './login_with_github'
+  './github_login',
+  './github_auth',
   // require('./login_register'),
 ].map(require);
