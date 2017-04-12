@@ -2,7 +2,6 @@ const bcrypt = require('bcrypt');
 const auth = require('./../database/auth');
 const joi = require('joi');
 const validateLoginRegister = require('./../helper_functions/validate_login_register');
-const handleLoginError = require('./../helper_functions/handle_login_error');
 
 module.exports = {
   method: 'POST',
