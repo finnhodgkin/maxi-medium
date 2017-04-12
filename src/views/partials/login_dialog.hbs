@@ -11,7 +11,7 @@
       {{#if username_loginError}}<p class="register-form__error" id="js-auth-error">{{username_loginError}}</p>{{/if}}
       <input type="password" class="login-form__input" name="password" placeholder="Enter password" autocomplete="off" value="{{form_login.password}}" {{#if password_loginError}}autofocus{{/if}}/>
       {{#if password_loginError}}<p class="register-form__error" id="js-auth-error">{{password_loginError}}</p>{{/if}}
-      <p class="login-form__error" id="js-auth-error"><p>
+      <p class="login-form__error" id="js-auth-error">{{loginError}}<p>
       <button class="login-form__btn--submit" type='submit'>Submit</button>
     </form>
 
@@ -23,9 +23,9 @@
       {{#if display_name_registerError}}<p class="register-form__error" id="js-auth-error">{{display_name_registerError}}</p>{{/if}}
       <input type="text" class="register-form__input" name="avatar_url" placeholder="Enter url to your profile picture" value="{{form_register.avatar_url}}" {{#if avatar_url_registerError}} autofocus{{/if}}/>
       {{#if avatar_url_registerError}}<p class="register-form__error" id="js-auth-error">{{avatar_url_registerError}}</p>{{/if}}
-      <input type="password" class="register-form__input"name="password" placeholder="Enter password (at least 1 number)" {{#unless confirmed_password_registerError}}value="{{form_register.password}}"{{/unless}} {{#if password_registerError}} autofocus{{/if}}/>
+      <input type="password" class="register-form__input"name="password" placeholder="Enter password (at least 1 number)" {{#unless confirmed_password_registerError}}value="{{form_register.password}}"{{/unless}} {{#if password_registerError}} autofocus{{/if}}{{#if confirmed_password_registerError}} autofocus{{/if}}/>
       {{#if password_registerError}}<p class="register-form__error" id="js-auth-error">{{password_registerError}}</p>{{/if}}
-      <input type="password" class="register-form__input"name="confirmed_password" placeholder="Confirm password" {{#unless confirmed_password_registerError}}value="{{form_register.confirmed_password}}"{{/unless}} {{#if confirmed_password_registerError}} autofocus{{/if}}/>
+      <input type="password" class="register-form__input"name="confirmed_password" placeholder="Confirm password" {{#unless confirmed_password_registerError}}value="{{form_register.confirmed_password}}"{{/unless}} />
       {{#if confirmed_password_registerError}}<p class="register-form__error" id="js-auth-error">{{confirmed_password_registerError}}</p>{{/if}}
       <p class="register-form__error" id="js-auth-error"><p>
       <button class="register-form__btn--submit" type='submit'>Submit</button>
