@@ -5,7 +5,7 @@ const hashPassword = require('./../helper_functions/hash_password');
 const post = {};
 
 
-post.registerUser = ({username, first_name, last_name, avatar_url, password}, callback) => {
+post.registerUser = ({username, display_name, avatar_url, password}, callback) => {
 
   const selectUserQuery = 'SELECT username FROM users WHERE username = $1;';
   connect.query(selectUserQuery, [username], (err, user) => {
@@ -13,14 +13,14 @@ post.registerUser = ({username, first_name, last_name, avatar_url, password}, ca
 
     if (!user.rows[0]) {
       const addUserQuery = `
-        INSERT INTO users (username, first_name, last_name, avatar_url, password)
+        INSERT INTO users (username, display_name, avatar_url, password)
         VALUES($1, $2, $3, $4, $5);
       `;
 
       hashPassword(password, (err, hash) => {
         if (err) { return callback('Sorry, but we have not been able to set up your account'); }
 
-        connect.query(addUserQuery, [username, first_name, last_name, avatar_url, hash], (err) => {
+        connect.query(addUserQuery, [username, display_name, avatar_url, hash], (err) => {
           if (err) { return callback('Database error during saving details'); }
           callback(null, 'New user added');
         });

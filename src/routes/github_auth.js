@@ -11,22 +11,39 @@ module.exports = {
   handler: (req, reply) => {
 
     // get access token
-    const queryParams = {
+    const queryParamsAccessToken = {
       code: req.url.query.code,
       client_id: process.env.CLIENT_ID,
       client_secret: process.env.CLIENT_SECRET
     };
 
-    const requestOptions = {
-      method: 'POST',
-      url: `https://github.com/login/oauth/access_token?${qs.stringify(queryParams)}`
-    };
+    const accessTokenUrl = `https://github.com/login/oauth/access_token?${qs.stringify(queryParamsAccessToken)}`;
 
-    request(requestOptions, (err, response, githubResponseBody) => {
+
+    request.post(accessTokenUrl, (err, response, githubAccessTokenResponse) => {
       if (err) { return console.log(err); }
+      //@TODO add error handling for no access token
+      const { access_token } = qs.parse(githubAccessTokenResponse);
 
-      const { access_token } = qs.parse(githubResponseBody);
-      reply(access_token);
+      const requestUserOptions = {
+        url: 'https://api.github.com/user',
+        headers: {
+          'User-Agent': 'maxi-medium',
+          Authorization: `token ${access_token}`
+        }
+      };
+
+      request.get(requestUserOptions, (err, response, githubUserResponse) => {
+        if (err) { return console.log(err); }
+
+        const userInfo = JSON.parse(githubUserResponse);
+        console.log(userInfo);
+        //@TODO DESTRUCTURE GITHUB-USER-RESPONSE --> USER
+        // const user = {
+        //
+        // };
+      });
+
     });
 
 
