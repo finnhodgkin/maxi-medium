@@ -11,7 +11,8 @@ module.exports = {
       date_posted: Date.now()
     });
 
-    marked(req.payload.body_text, (err, content) => {
+    const strippedText = req.payload.body_text.replace(/<|>/g, match => match === '<' ? '&lt;' : '&gt;');
+    marked(strippedText, (err, content) => {
       newArticle.body_text = content;
 
       post.articles(newArticle, (dbErr) => {
