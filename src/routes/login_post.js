@@ -1,12 +1,20 @@
 const bcrypt = require('bcrypt');
-
 const auth = require('./../database/auth');
+const joi = require('joi');
+const validateLoginRegister = require('./../helper_functions/validate_login_register');
 
 module.exports = {
   method: 'POST',
   path: '/login',
   config: {
     auth: { mode: 'try' },
+    validate: {
+      payload: joi.object({
+        password: joi.string().min(6).max(64).required(),
+        username: joi.string().min(2).max(64).required(),
+      }),
+      failAction: validateLoginRegister,
+    }
   },
   handler: (req, reply) => {
     const username = req.payload.username;

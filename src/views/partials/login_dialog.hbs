@@ -1,4 +1,4 @@
-<div class="overlay" id="js-overlay">
+<div class="overlay {{#if authPrompt}}overlay-active{{/if}}" id="js-overlay">
   <div class="dialog" id="js-dialog">
 
     <h3 class="login-form__title">Login with GitHub</h3>
@@ -7,19 +7,26 @@
     <button class="dialog__btn--close" id="js-dialog-close-btn">X</button>
     <form class="login-form" id="js-login-form" action="/login" method="POST">
       <h3 class="login-form__title">Login</h3>
-      <input type="text" class="login-form__input"name="username" placeholder="Enter username" required autocomplete="off"/>
-      <input type="password" class="login-form__input"name="password" placeholder="Enter password" required autocomplete="off"/>
+      <input type="text" class="login-form__input"name="username" placeholder="Enter username" autocomplete="off" value="{{form_login.username}}" {{#if username_loginError}}autofocus{{/if}}/>
+      {{#if username_loginError}}<p class="register-form__error" id="js-auth-error">{{username_loginError}}</p>{{/if}}
+      <input type="password" class="login-form__input" name="password" placeholder="Enter password" autocomplete="off" value="{{form_login.password}}" {{#if password_loginError}}autofocus{{/if}}/>
+      {{#if password_loginError}}<p class="register-form__error" id="js-auth-error">{{password_loginError}}</p>{{/if}}
       <p class="login-form__error" id="js-auth-error"><p>
       <button class="login-form__btn--submit" type='submit'>Submit</button>
     </form>
 
     <form class="register-form" id="js-register-form" action="/register" method="POST">
       <h3 class="register-form__title">Create a new account</h3>
-      <input type="text" class="register-form__input" name="username" placeholder="Enter username" required />
-      <input type="text" class="register-form__input" name="display_name" placeholder="Enter your name" required />
-      <input type="text" class="register-form__input" name="avatar_url" placeholder="Enter url to your profile picture" required />
-      <input type="password" class="register-form__input"name="password" placeholder="Enter password (at least 1 number)" required />
-      <input type="password" class="register-form__input"name="confirmed-password" placeholder="Confirm password" required />
+      <input type="text" class="register-form__input" name="username" placeholder="Enter username" value="{{form_register.username}}" {{#if username_registerError}}autofocus{{/if}}/>{{username_registerError}}
+      {{#if username_registerError}}<p class="register-form__error" id="js-auth-error">{{username_registerError}}</p>{{/if}}
+      <input type="text" class="register-form__input" name="display_name" placeholder="Enter your name" value="{{form_register.display_name}}" {{#if display_name_registerError}}autofocus{{/if}}/>
+      {{#if display_name_registerError}}<p class="register-form__error" id="js-auth-error">{{display_name_registerError}}</p>{{/if}}
+      <input type="text" class="register-form__input" name="avatar_url" placeholder="Enter url to your profile picture" value="{{form_register.avatar_url}}" {{#if avatar_url_registerError}} autofocus{{/if}}/>
+      {{#if avatar_url_registerError}}<p class="register-form__error" id="js-auth-error">{{avatar_url_registerError}}</p>{{/if}}
+      <input type="password" class="register-form__input"name="password" placeholder="Enter password (at least 1 number)" {{#unless confirmed_password_registerError}}value="{{form_register.password}}"{{/unless}} {{#if password_registerError}} autofocus{{/if}}/>
+      {{#if password_registerError}}<p class="register-form__error" id="js-auth-error">{{password_registerError}}</p>{{/if}}
+      <input type="password" class="register-form__input"name="confirmed_password" placeholder="Confirm password" {{#unless confirmed_password_registerError}}value="{{form_register.confirmed_password}}"{{/unless}} {{#if confirmed_password_registerError}} autofocus{{/if}}/>
+      {{#if confirmed_password_registerError}}<p class="register-form__error" id="js-auth-error">{{confirmed_password_registerError}}</p>{{/if}}
       <p class="register-form__error" id="js-auth-error"><p>
       <button class="register-form__btn--submit" type='submit'>Submit</button>
     </form>

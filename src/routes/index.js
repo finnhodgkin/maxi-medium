@@ -9,5 +9,4 @@ module.exports = [
   './write_a_story_prev_post',
   './github_login',
   './github_auth',
-  // require('./login_register'),
 ].map(require);
