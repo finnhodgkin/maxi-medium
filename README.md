@@ -13,7 +13,36 @@ We are building a simple blog posting web application that allows users to log i
 - Add a DATABASE_URL variable with a link to a local PSQL database on your computer.
 - Add a COOKIE_PASSWORD variable of at least 32 random characters (this is used to encrypt cookies from the server).
 
+## Tech to include
+
+- Use Ouath to login user with Github
+- Merge Github login with bespoke login and registration
+- See GitHub profile picture
+- Validate front end input on back end using Joi
+- Markdown Preview
+- Separate login page if front end javascript disabled
+
+
 ## User Stories
+
+I can click on a button, which allows me to log in via my Github account
+
+Acceptance:
+I can click on a button, which allows me to log in via my Github account
+The look of the button should make it obvious that it is this form of login
+Once I'm logged in, I should see a list of blog posts
+I shouldn't be left with a blank loading screen for too long during the authorisation process, otherwise I will lose confidence in your website and leave.
+ I can see my username & profile picture on each page that I visit
+ I can click on a button next to any of my posts, which takes me to an edit view
+I can't see an edit button next to anyone else's posts
+Each user has the same experience (but with their own posts)
+Clicking "done" / "submit" changes the content for every user to see
+Clicking "done" / "submit" takes me to a view of the new, edited version of my blog post
+
+
+
+
+
 
 As a user, I want to be able to:
 - [x] Post new blog posts
