@@ -17,17 +17,23 @@ post.registerUser = ({github_id = null, username, display_name, avatar_url, pass
         VALUES($1, $2, $3, $4, $5);
       `;
 
-      hashPassword(password, (err, hash) => {
-        if (err) { return callback('Sorry, but we have not been able to set up your account'); }
+      const queryCallback = (err) => {
+        if (err) { return callback('Database error during saving details'); }
+        callback(null, 'New user added');
+      };
 
-        const userInfo = [github_id, username, display_name, avatar_url, hash];
+      // if new user is registering via github
+      if (github_id) {
+        const userInfo = [github_id, username, display_name, avatar_url, password];
+        connect.query(addUserQuery, userInfo, queryCallback);
+      } else {
+        hashPassword(password, (err, hash) => {
+          if (err) { return callback('Sorry, but we have not been able to set up your account'); }
 
-        connect.query(addUserQuery, userInfo, (err) => {
-          if (err) { return callback('Database error during saving details'); }
-          callback(null, 'New user added');
+          const userInfo = [github_id, username, display_name, avatar_url, hash];
+          connect.query(addUserQuery, userInfo, queryCallback);
         });
-
-      });
+      }
 
     } else {
       callback('Sorry that username is taken!');
