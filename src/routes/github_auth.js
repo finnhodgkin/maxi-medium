@@ -1,6 +1,8 @@
 const request = require('request');
 const qs = require('querystring');
 
+const post = require('./../database/post');
+
 
 module.exports = {
   method: 'GET',
@@ -17,11 +19,13 @@ module.exports = {
       client_secret: process.env.CLIENT_SECRET
     };
 
-    const accessTokenUrl = `https://github.com/login/oauth/access_token?${qs.stringify(queryParamsAccessToken)}`;
 
+    const accessTokenUrl = `https://github.com/login/oauth/access_token?${qs.stringify(queryParamsAccessToken)}`;
 
     request.post(accessTokenUrl, (err, response, githubAccessTokenResponse) => {
       if (err) { return console.log(err); }
+
+
       //@TODO add error handling for no access token
       const { access_token } = qs.parse(githubAccessTokenResponse);
 
@@ -37,23 +41,27 @@ module.exports = {
         if (err) { return console.log(err); }
 
         const userInfo = JSON.parse(githubUserResponse);
-        console.log(userInfo);
+
         //@TODO DESTRUCTURE GITHUB-USER-RESPONSE --> USER
-        // const user = {
-        //
-        // };
+        const user = {
+          github_id: userInfo.id,
+          username: userInfo.login,
+          display_name: userInfo.name,
+          avatar_url: userInfo.avatar_url,
+        };
+
+        post.registerUser(user, (err) => {
+          if (err) { return console.log(err); }
+
+
+        });
+
+
+
       });
 
     });
 
-
-
-
-
-    // get user info
-
-
-    // add/update user info in db
 
 
     // create jwt
@@ -63,6 +71,7 @@ module.exports = {
 
 
     // redirect to home
+    reply.redirect('/');
 
   }
 };

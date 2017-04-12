@@ -5,7 +5,7 @@ const hashPassword = require('./../helper_functions/hash_password');
 const post = {};
 
 
-post.registerUser = ({username, display_name, avatar_url, password}, callback) => {
+post.registerUser = ({github_id = null, username, display_name, avatar_url, password = null}, callback) => {
 
   const selectUserQuery = 'SELECT username FROM users WHERE username = $1;';
   connect.query(selectUserQuery, [username], (err, user) => {
@@ -13,14 +13,16 @@ post.registerUser = ({username, display_name, avatar_url, password}, callback) =
 
     if (!user.rows[0]) {
       const addUserQuery = `
-        INSERT INTO users (username, display_name, avatar_url, password)
+        INSERT INTO users (github_id, username, display_name, avatar_url, password)
         VALUES($1, $2, $3, $4, $5);
       `;
 
       hashPassword(password, (err, hash) => {
         if (err) { return callback('Sorry, but we have not been able to set up your account'); }
 
-        connect.query(addUserQuery, [username, display_name, avatar_url, hash], (err) => {
+        const userInfo = [github_id, username, display_name, avatar_url, hash];
+
+        connect.query(addUserQuery, userInfo, (err) => {
           if (err) { return callback('Database error during saving details'); }
           callback(null, 'New user added');
         });
