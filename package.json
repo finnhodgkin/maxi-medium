@@ -8,10 +8,10 @@
   },
   "scripts": {
     "start": "node src/start.js",
-    "devStart": "nodemon src/start.js -e 'js, css, html, hbs'",
-    "pretest": "NODE_ENV=testing node database_build/db_build.js",
-    "test": "NODE_ENV=testing tape tests/index.test.js | tap-spec",
-    "coverage": "NODE_ENV=testing istanbul cover tests/index.test.js",
+    "devStart": "NODE_ENV=dev nodemon src/start.js -e 'js, css, html, hbs'",
+    "pretest": "NODE_ENV=test node database_build/db_build.js",
+    "test": "NODE_ENV=test tape tests/index.test.js | tap-spec",
+    "coverage": "NODE_ENV=test istanbul cover tests/index.test.js",
     "dbBuild": "node database_build/db_build.js"
   },
   "repository": {
