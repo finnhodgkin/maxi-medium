@@ -92,8 +92,7 @@ Column | Type | Modifiers
 --- | --- | ---
 id | integer | not null default
 username | character varying(64) | not null
-first_name | character varying(64) | not null
-last_name | character varying(64) | not null
+display_name | character varying(64) | not null
 password | character varying(64) | not null
 avatar_url | character varying(500) | not null
 

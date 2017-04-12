@@ -29,8 +29,8 @@ tape('handlebars - render display name of authors of all stories', (t) => {
 
   const context = {
     articles: [
-      {first_name: 'Finn', last_name: 'Hodgkin'},
-      {first_name: 'Piotr', last_name: 'Berebecki'},
+      {display_name: 'Finn Hodgkin'},
+      {display_name: 'Piotr Berebecki'},
     ]
   };
 

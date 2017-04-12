@@ -3,12 +3,12 @@ BEGIN;
 DROP TABLE IF EXISTS users, articles CASCADE;
 
 CREATE TABLE users (
-  id          SERIAL        PRIMARY KEY,
-  username    VARCHAR(64)   UNIQUE,
-  first_name  VARCHAR(64)   NOT NULL,
-  last_name   VARCHAR(64)   NOT NULL,
-  password    VARCHAR(64)   NOT NULL,
-  avatar_url  VARCHAR(500)  NOT NULL
+  id            SERIAL        PRIMARY KEY,
+  github_id     VARCHAR(20)   UNIQUE,
+  username      VARCHAR(64)   UNIQUE,
+  display_name  VARCHAR(64)   NOT NULL,
+  password      VARCHAR(64),
+  avatar_url    VARCHAR(500)  NOT NULL
 );
 
 CREATE TABLE articles (
@@ -20,10 +20,10 @@ CREATE TABLE articles (
   date_posted  VARCHAR(50)     NOT NULL
 );
 
-INSERT INTO users (username, first_name, last_name, password, avatar_url)
+INSERT INTO users (username, github_id, display_name, password, avatar_url)
 VALUES
-('u1', 'Finn', 'Hodgkin', '$2a$10$lbczBZ5YwKsO6eC2Tm.9/.Xtky/2qjoXVR607Zs0ejmriJengZFqS', './images/finn_headshot.jpg'),
-('u2', 'Piotr', 'Berebecki', '$2a$10$XP3ZfjT33e0Qf.ANb8bJGegtVfhv1V7P2xsCry4I8W8p68.hBt/i2', './images/piotr_headshot.jpg');
+('Finn', NULL, 'Finn Hodgkin', '$2a$10$lbczBZ5YwKsO6eC2Tm.9/.Xtky/2qjoXVR607Zs0ejmriJengZFqS', './images/finn_headshot.jpg'),
+('Piotr', NULL, 'Piotr Berebecki', '$2a$10$XP3ZfjT33e0Qf.ANb8bJGegtVfhv1V7P2xsCry4I8W8p68.hBt/i2', './images/piotr_headshot.jpg');
 
 INSERT INTO articles (author_id, title, body_text, image_url, date_posted)
 VALUES
