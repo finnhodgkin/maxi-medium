@@ -5,7 +5,7 @@ const tape = require('tape');
 const routes = [
   {url: '/', method: 'GET', statusCode: 200, payload: 'DOCTYPE html'},
   {url: '/some-bad-url', method: 'GET', statusCode: 404},
-  // {url: '/github-auth', method: 'GET', statusCode: 302},
+  {url: '/github-auth', method: 'GET', statusCode: 302},
   // {url: '/login-with-github', method: 'GET', statusCode: 302},
   {url: '/login', method: 'POST', statusCode: 500},
   {url: '/register', method: 'POST', statusCode: 500},
