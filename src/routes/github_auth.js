@@ -55,7 +55,6 @@ module.exports = {
         // Add a DB check to see if Github user exists
         githubAuth(user.github_id, (err, userDb) => {
           if (err) { return console.log(err); }
-          console.log('running');
 
           if (userDb) {
             const isUserInfoTheSame = Object.keys(userDb).every(key => {
