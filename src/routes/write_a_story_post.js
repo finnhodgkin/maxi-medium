@@ -11,7 +11,9 @@ module.exports = {
       date_posted: Date.now()
     });
 
-    const strippedText = req.payload.body_text.replace(/<|>/g, match => match === '<' ? '&lt;' : '&gt;');
+    const strippedText = req.payload.body_text
+      .replace(/<|>/g, match => match === '<' ? '&lt;' : '&gt;');
+      
     marked(strippedText, (err, content) => {
       newArticle.body_text = content;
 

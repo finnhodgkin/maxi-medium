@@ -12,6 +12,7 @@ module.exports = {
     auth: false
   },
   handler: (req, reply) => {
+    const renderError = message => reply.view('index', { error: message });
 
     // get access token
     const queryParamsAccessToken = {
@@ -23,10 +24,12 @@ module.exports = {
     const accessTokenUrl = `https://github.com/login/oauth/access_token?${qs.stringify(queryParamsAccessToken)}`;
 
     request.post(accessTokenUrl, (err, response, githubAccessTokenResponse) => {
-      if (err) { return console.log(err); }
+      if (err) { return renderError('Error connecting to Github.'); }
 
-      //@TODO add error handling for no access token
       const { access_token } = qs.parse(githubAccessTokenResponse);
+      if (!access_token) {
+        return renderError('Error connecting to your Github account.');
+      }
 
       const requestUserOptions = {
         url: 'https://api.github.com/user',
@@ -37,11 +40,10 @@ module.exports = {
       };
 
       request.get(requestUserOptions, (err, response, githubUserResponse) => {
-        if (err) { return console.log(err); }
+        if (err) { return renderError('Error fetching Github user details.'); }
 
         const userInfo = JSON.parse(githubUserResponse);
 
-        //@TODO DESTRUCTURE GITHUB-USER-RESPONSE --> USER
         const user = {
           github_id: userInfo.id,
           username: userInfo.login,

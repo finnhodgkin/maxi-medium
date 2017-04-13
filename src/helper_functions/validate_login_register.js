@@ -18,6 +18,6 @@ module.exports = function (request, reply, source, err) {
       .replace(/_/g, ' ')
       .replace(/[a-z]/i, char => char.toUpperCase());
 
-    return reply.view('index', {articles: articles, [errorField]: message, authPrompt: true, ['form_' + path]: request.payload });
+    return reply.view('index', { articles: articles, [errorField]: message, authPrompt: true, ['form_' + path]: request.payload });
   });
 };
