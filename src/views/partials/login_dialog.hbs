@@ -1,10 +1,11 @@
 <div class="overlay {{#if authPrompt}}overlay-active{{/if}}" id="js-overlay">
   <div class="dialog" id="js-dialog">
 
-    <h3 class="login-form__title">Login with GitHub</h3>
-    <a href="/login-with-github">Login with GitHub</a>
-
     <button class="dialog__btn--close" id="js-dialog-close-btn">X</button>
+
+    <h3 class="login-form__title">Social login / register</h3>
+    <a class="login-form__social-btn login-form__social-btn--github" href="/login-with-github">{{> logo_github}}Connect with GitHub</a>
+
     <form class="login-form" id="js-login-form" action="/login" method="POST">
       <h3 class="login-form__title">Login</h3>
       <input type="text" class="login-form__input"name="username" placeholder="Enter username" autocomplete="off" value="{{form_login.username}}" {{#if username_loginError}}autofocus{{/if}}/>

@@ -278,6 +278,14 @@ $MAIN CONTENT POST
   }
 }
 
+.story-form__title {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0.6rem;
+  color: rgb(70, 70, 70);
+  font-size: 1.1rem;
+}
+
 .story__input--title {
 
 }
@@ -368,6 +376,37 @@ $LOGIN DIALOG
 .dialog__btn--close:hover {
   background-color: #aaa;
 }
+
+
+.login-form__social-btn {
+  width: 100%;
+  margin-top: 0.7rem;
+  padding: 0.5rem 0.7rem;
+  color: white;
+  margin-bottom: 1rem;
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.92rem;
+}
+
+
+.login-form__social-btn--github {
+  background-color: rgb(36, 41, 46);
+  display: flex;
+  align-items: center;
+  margin-right: 0.5rem;
+}
+
+.login-form__social-btn--github:hover {
+  background-color: rgb(17, 18, 20);
+}
+
+.logo__github {
+  margin-right: 0.5rem
+}
+
+
 
 .login-form, .register-form {
   display: flex;
