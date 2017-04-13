@@ -2,6 +2,9 @@
 [![codecov](https://codecov.io/gh/finnhodgkin/maxi-medium/branch/master/graph/badge.svg)](https://codecov.io/gh/finnhodgkin/maxi-medium)
 
 
+https://maxi-medium.herokuapp.com/
+
+
 # MMedium's Maxi-Medium
 
 We are building a simple blog posting web application that allows users to log into their account and input new blogs posts that can be viewed in a newsfeed of most recents posts.
