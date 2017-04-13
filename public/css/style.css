@@ -247,6 +247,10 @@ $MAIN CONTENT HOME
   color: #8f8f8f;
 }
 
+.item__summary p {
+  color: #8f8f8f;
+}
+
 @media screen and (min-width: 48em) {
   .item__summary {
     width: 100%;
