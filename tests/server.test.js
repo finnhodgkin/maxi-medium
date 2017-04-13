@@ -5,8 +5,6 @@ const tape = require('tape');
 const routes = [
   {url: '/', method: 'GET', statusCode: 200, payload: 'DOCTYPE html'},
   {url: '/some-bad-url', method: 'GET', statusCode: 404},
-  {url: '/github-auth', method: 'GET', statusCode: 302},
-  // {url: '/login-with-github', method: 'GET', statusCode: 302},
   {url: '/login', method: 'POST', statusCode: 500},
   {url: '/register', method: 'POST', statusCode: 500},
   {url: '/write-a-story', method: 'GET', statusCode: 302},
@@ -15,7 +13,6 @@ const routes = [
   {url: '/logout', method: 'GET', statusCode: 302},
   {url: '/css/style.css', method: 'GET', statusCode: 200},
   {url: '/css/style.css', method: 'GET', statusCode: 200},
-
 ];
 
 
@@ -26,10 +23,8 @@ routes.forEach(route => {
       method: route.method,
     };
     server.inject(options, (res) => {
-      t.equal(res.statusCode, route.statusCode, `statusCode should be ${route.statusCode}`);
-      if (route.payload) {
-        t.ok(res.payload.indexOf(route.payload) !== -1, 'correct payload should be served');
-      }
+      route.statusCode && t.equal(res.statusCode, route.statusCode, `statusCode should be ${route.statusCode}`);
+      route.payload    && t.ok(res.payload.indexOf(route.payload) !== -1, 'correct payload should be served');
       t.end();
     });
   });
