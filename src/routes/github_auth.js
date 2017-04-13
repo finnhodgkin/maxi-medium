@@ -20,12 +20,10 @@ module.exports = {
       client_secret: process.env.CLIENT_SECRET
     };
 
-
     const accessTokenUrl = `https://github.com/login/oauth/access_token?${qs.stringify(queryParamsAccessToken)}`;
 
     request.post(accessTokenUrl, (err, response, githubAccessTokenResponse) => {
       if (err) { return console.log(err); }
-
 
       //@TODO add error handling for no access token
       const { access_token } = qs.parse(githubAccessTokenResponse);
@@ -51,19 +49,15 @@ module.exports = {
           avatar_url: userInfo.avatar_url,
         };
 
-
         // Add a DB check to see if Github user exists
         githubAuth(user.github_id, (err, userDb) => {
           if (err) { return console.log(err); }
-          console.log('running');
 
           if (userDb) {
-            const isUserInfoTheSame = Object.keys(userDb).every(key => {
-              return userDb[key] == user[key];
-            });
+            const isUserInfoTheSame = Object.keys(userDb)
+              .every(key => userDb[key] == user[key]);
 
-
-            // If they do, update details
+            // If the user exists but their information has changed, update details
             if (!isUserInfoTheSame) {
               post.updateUser(user, (err) => {
                 if (err) { return console.log(err); }
@@ -73,17 +67,15 @@ module.exports = {
             // If they don't, register a new user
             post.registerUser(user, (err) => {
               if (err) { return console.log(err); }
-              // handle a case of github user changling their username in conflict with
+              // @TODO handle a case of github user changling their username in conflict with
               // an existing user, between sessions
             });
           }
-
 
           req.cookieAuth.set({ username: user.username, avatar_url: user.avatar_url });
           reply.redirect('/');
         });
       });
-
     });
   }
 };
