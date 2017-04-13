@@ -20,13 +20,14 @@ module.exports = {
       client_secret: process.env.CLIENT_SECRET
     };
 
+
     const accessTokenUrl = `https://github.com/login/oauth/access_token?${qs.stringify(queryParamsAccessToken)}`;
 
     request.post(accessTokenUrl, (err, response, githubAccessTokenResponse) => {
       if (err) { return console.log(err); }
 
 
-      // @TODO add error handling for no access token
+      //@TODO add error handling for no access token
       const { access_token } = qs.parse(githubAccessTokenResponse);
 
       const requestUserOptions = {
@@ -62,22 +63,21 @@ module.exports = {
             });
 
 
-            // If user info has changed, update info
+            // If they do, update details
             if (!isUserInfoTheSame) {
               post.updateUser(user, (err) => {
                 if (err) { return console.log(err); }
               });
             }
           } else {
-            // If they don't exist in DB, register a new user
+            // If they don't, register a new user
             post.registerUser(user, (err) => {
               if (err) { return console.log(err); }
+              // handle a case of github user changling their username in conflict with
+              // an existing user, between sessions
             });
           }
 
-
-          // @TODO handle a case of github user changling their username in conflict with
-          // an existing user, between sessions
 
           req.cookieAuth.set({ username: user.username, avatar_url: user.avatar_url });
           reply.redirect('/');
