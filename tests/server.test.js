@@ -6,7 +6,7 @@ const routes = [
   {url: '/', method: 'GET', statusCode: 200, payload: 'DOCTYPE html'},
   {url: '/some-bad-url', method: 'GET', statusCode: 404},
   {url: '/login', method: 'POST', statusCode: 500},
-  {url: '/register', method: 'POST', statusCode: 500},
+  {url: '/register', method: 'POST', statusCode: 200},
   {url: '/write-a-story', method: 'GET', statusCode: 302},
   {url: '/write-a-story', method: 'POST', statusCode: 302},
   {url: '/write-a-story-preview', method: 'POST', statusCode: 302},
